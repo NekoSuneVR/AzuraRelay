@@ -41,11 +41,11 @@ final class Nginx
         $port = $relay->getPort();
 
         return <<<NGINX
-        location ~ ^({$listenBaseUrl}|/radio/{$port})\$ {
+        location ~ ^({$listenBaseUrl}|/listen/{$port})\$ {
             return 302 \$uri/;
         }
 
-        location ~ ^({$listenBaseUrl}|/radio/{$port})/(.*)\$ {
+        location ~ ^({$listenBaseUrl}|/listen/{$port})/(.*)\$ {
             include proxy_params;
 
             proxy_intercept_errors    on;
